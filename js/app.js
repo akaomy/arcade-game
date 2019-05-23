@@ -1,55 +1,48 @@
-// object prototype of Enemy
-const enemy = {
-    // Enemy coordinates
-    this.x = x,
-    this.y = y,
-    // this.speed = speed;
-    // The image/sprite for our enemies, this uses
-    // a helper we've provided to easily load images
-    this.sprite = 'images/enemy-bug.png'
-};
+// Common class
+class Creature {
+  constructor(sprite) {
+    this.x = x;
+    this.y = y;
+    this.sprite = sprite;
+  }
 
-// Update the enemy's position, required method for game
-// Parameter: dt, a time delta between ticks
-Enemy.prototype.update = function(dt) {
-    // Multiplies any movement by the dt parameter
-    // which will ensure the game runs at the same speed for
-    // all computers
-    this.x = this.x + this.speed * dt;
-    // TODO: reset the enemy once it goes off screen
-};
-
-// Draws the enemy on the screen
-Enemy.prototype.render = function() {
-    ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
-    // TODO: add more parameters for game statistic
-};
-
-
-// TODO: create functionality for handling collision
-
-// Object prototype player
-const player = {
-  this.startX = 150;
-  this.startY = 150;
-  this.x = this.startX;
-  this.y = this.startY;
-  this.sprite = 'images/char-cat-girl.png';
+  // Update the enemy's position, required method for game
+  // Parameter: dt, a time delta between ticks
+  update(dt) {
+      // Multiplies any movement by the dt parameter
+      // which will ensure the game runs at the same speed for
+      // all computers
+      this.x = this.x + this.speed * dt;
+      // TODO: reset the enemy once it goes off screen
+  };
+  // Draws the enemy on the screen
+  render() {
+      ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
+      // TODO: add more parameters for game statistic
+  };
 }
 
-// updates position of the Player
-Player.prototype.update = function() {
+
+
+
+// class of Enemy with inherited base Creature class
+class Enemy extends Creature { // how to extend
+
 }
 
-// renders player on the screen
-Player.prototype.render = function() {
-  ctx.drawImage(Resources(this.sprite), this.x, this.y);
+
+
+
+
+class Player {
+  // changegs location of the player when certain keys are pressed
+  Player.prototype.handleInput = function() {
+    // TODO: switch statement for up, right, bottom and left keypresses ?
+  }
 }
 
-// changegs location of the player when certain keys are pressed
-Player.prototype.handleInput = function() {
-  // TODO: switch statement for up, right, bottom and left keypresses ?
-}
+
+
 
 // # Objects instantiation:
 // All enemy objects in an array called allEnemies
@@ -57,12 +50,14 @@ Player.prototype.handleInput = function() {
 let allEnemies = [];
 let player = Object.create(player);
 
-// TODOL: allEnemies instantiation
-
+// TODO: allEnemies instantiation
 
 // TODO: how to use factory function to instantiate the enemies?
 // Note: classes are better in performance than factory functions if there are 10000+
 // instances
+
+
+
 
 
 // This listens for key presses and sends the keys to your
