@@ -23,8 +23,6 @@ class Creature {
 }
 
 
-
-
 // class of Enemy with inherited base Creature class
 class Enemy extends Creature { // how to extend
 
@@ -32,16 +30,12 @@ class Enemy extends Creature { // how to extend
 
 
 
-
-
-class Player {
+class Player extends Creature{
   // changegs location of the player when certain keys are pressed
   Player.prototype.handleInput = function() {
     // TODO: switch statement for up, right, bottom and left keypresses ?
   }
 }
-
-
 
 
 // # Objects instantiation:
@@ -55,8 +49,6 @@ let player = Object.create(player);
 // TODO: how to use factory function to instantiate the enemies?
 // Note: classes are better in performance than factory functions if there are 10000+
 // instances
-
-
 
 
 
