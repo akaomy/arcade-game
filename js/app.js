@@ -32,7 +32,7 @@ class Enemy extends Creature { // how to extend
 
 class Player extends Creature{
   // changegs location of the player when certain keys are pressed
-  Player.prototype.handleInput = function() {
+  handleInput() {
     // TODO: switch statement for up, right, bottom and left keypresses ?
   }
 }
