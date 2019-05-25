@@ -1,55 +1,67 @@
-// Common class
-class Creature {
-  constructor(sprite) {
+// Enemies our player must avoid
+var Enemy = function() {
+    // Variables applied to each of our instances go here,
+    // we've provided one for you to get started
+
+    // The image/sprite for our enemies, this uses
+    // a helper we've provided to easily load images
+    this.sprite = 'images/enemy-bug.png';
+};
+
+// Update the enemy's position, required method for game
+// Parameter: dt, a time delta between ticks
+Enemy.prototype.update = function(dt) {
+    // You should multiply any movement by the dt parameter
+    // which will ensure the game runs at the same speed for
+    // all computers.
+};
+
+// Draw the enemy on the screen, required method for game
+Enemy.prototype.render = function() {
+    ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
+};
+
+// Now write your own player class
+// This class requires an update(), render() and
+// a handleInput() method.
+
+class Player {
+  constructor(x, y) {
     this.x = x;
     this.y = y;
-    this.sprite = sprite;
+    this.sprite = "images/char-cat-girl.png";
   }
 
-  // Update the enemy's position, required method for game
-  // Parameter: dt, a time delta between ticks
-  update(dt) {
-      // Multiplies any movement by the dt parameter
-      // which will ensure the game runs at the same speed for
-      // all computers
-      this.x = this.x + this.speed * dt;
-      // TODO: reset the enemy once it goes off screen
-  };
-  // Draws the enemy on the screen
+  update() {};
+
   render() {
-      ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
-      // TODO: add more parameters for game statistic
+    ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
+  };
+
+  handleInput(direction_moves) {
+
+    switch(direction_moves) {
+      case 'left':
+        this.x = this.x - 100;
+        break;
+      case 'right':
+        this.x = this.x + 100;
+        break;
+      case 'up':
+        console.log(this.y);
+        this.y = this.y - 83; // once player gets to -15, game ends
+        break;
+      case 'down':
+        this.y = this.y + 83;
+        break;
+    }
   };
 }
 
-
-// class of Enemy with inherited base Creature class
-class Enemy extends Creature { // how to extend
-
-}
-
-
-
-class Player extends Creature{
-  // changegs location of the player when certain keys are pressed
-  handleInput() {
-    // TODO: switch statement for up, right, bottom and left keypresses ?
-  }
-}
-
-
-// # Objects instantiation:
-// All enemy objects in an array called allEnemies
-// Player object in a variable called player
-let allEnemies = [];
-let player = Object.create(player);
-
-// TODO: allEnemies instantiation
-
-// TODO: how to use factory function to instantiate the enemies?
-// Note: classes are better in performance than factory functions if there are 10000+
-// instances
-
+// Now instantiate your objects.
+// Place all enemy objects in an array called allEnemies
+// Place the player object in a variable called player
+const player = new Player(200,400);
 
 
 // This listens for key presses and sends the keys to your
@@ -61,6 +73,5 @@ document.addEventListener('keyup', function(e) {
         39: 'right',
         40: 'down'
     };
-
     player.handleInput(allowedKeys[e.keyCode]);
 });
