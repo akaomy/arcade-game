@@ -48,8 +48,12 @@ class Player {
         this.x = this.x + 100;
         break;
       case 'up':
-        console.log(this.y);
         this.y = this.y - 83; // once player gets to -15, game ends
+        console.log(this.y);
+        if (this.y == -15) {
+          console.log(this.y + ' game over');
+          console.log('player can\'t move anymore');
+        }
         break;
       case 'down':
         this.y = this.y + 83;
