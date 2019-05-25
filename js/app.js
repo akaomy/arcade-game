@@ -48,9 +48,10 @@ class Player {
         this.x = this.x + 100;
         break;
       case 'up':
-        this.y = this.y - 83; // once player gets to -15, game ends
-        console.log(this.y);
-        if (this.y == -15) {
+        if (this.y > 0) { // blocks player going off the screen
+          this.y = this.y - 83;
+        }
+        if (this.y == -15) { // once player gets to -15, game ends
           console.log(this.y + ' game over');
           console.log('player can\'t move anymore');
         }
@@ -65,7 +66,7 @@ class Player {
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
 // Place the player object in a variable called player
-const player = new Player(200,400);
+const player = new Player(200, 400);
 
 
 // This listens for key presses and sends the keys to your
