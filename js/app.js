@@ -58,6 +58,9 @@ class Player {
         break;
       case 'down':
         this.y = this.y + 83;
+        if (this.y == 483) { // blocks player going off the screen
+          this.y = 400;
+        }
         break;
     }
   };
