@@ -43,9 +43,16 @@ class Player {
     switch(direction_moves) {
       case 'left':
         this.x = this.x - 100;
+        if (this.x < 1) { // blocks player going off the screen
+          this.x = 0;
+        }
         break;
       case 'right':
         this.x = this.x + 100;
+        console.log(this.x);
+        if (this.x >= 400) { // blocks player going off the screen
+          this.x = 400;
+        }
         break;
       case 'up':
         if (this.y > 0) { // blocks player going off the screen
