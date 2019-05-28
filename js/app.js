@@ -44,44 +44,46 @@ class Player extends Creature {
     switch(direction_moves) {
       case 'left':
         this.x = this.x - 100;
-        if (this.x < 1) { // blocks player going off the screen
+        if (this.x < 1) {
           this.x = 0;
         }
         break;
       case 'right':
         this.x = this.x + 100;
-        if (this.x >= 400) { // blocks player going off the screen
+        if (this.x >= 400) {
           this.x = 400;
         }
         break;
       case 'up':
-        if (this.y > 0) { // blocks player going off the screen
-          this.y = this.y - 83;
+        if (this.y > 0) {
+          this.y = this.y - 85;
+          console.log(this.y);
         }
-        if (this.y == -15) { // once player gets to -15, game ends
+        if (this.y == -25) {
           console.log(this.y + ' game over');
           // TODO: player can\'t move anymore
         }
         break;
       case 'down':
-        this.y = this.y + 83;
-        if (this.y == 483) { // blocks player going off the screen
-          this.y = 400;
+        this.y = this.y + 83;   // fix bug
+        console.log(this.y);
+        if (this.y >= 473) {
+          this.y = 473;
         }
         break;
     }
   };
 }
+// player appears in the middle and at the bottom of the screen
+const player = new Player(200, 473, 75, 60, "images/char-cat-girl.png");
 
-const player = new Player(200, 400, 100, 60, "images/char-cat-girl.png");
+//const enemy = new Enemy(0, 55, 75, 60, "images/enemy-bug.png");
+//const enemy2 = new Enemy(0, 140, 75, 60, "images/enemy-bug.png");
+// const enemy3 = new Enemy(0, 225, 75, 60, "images/enemy-bug.png");
+// const enemy4 = new Enemy(0, 305, 75, 60, "images/enemy-bug.png");
+// const enemy5 = new Enemy(0, 390, 75, 60, "images/enemy-bug.png");
 
-const enemy = new Enemy(0, 55, 100, 60, "images/enemy-bug.png");
-const enemy2 = new Enemy(0, 140, 100, 60, "images/enemy-bug.png");
-const enemy3 = new Enemy(0, 225, 100, 60, "images/enemy-bug.png");
-const enemy4 = new Enemy(0, 305, 100, 60, "images/enemy-bug.png");
-const enemy5 = new Enemy(0, 390, 100, 60, "images/enemy-bug.png");
-
-const allEnemies = [enemy, enemy2, enemy3, enemy4, enemy5];
+//const allEnemies = [enemy, enemy2];
 
 // This listens for key presses and sends the keys to your
 // Player.handleInput() method. You don't need to modify this.
