@@ -21,15 +21,20 @@ class Enemy extends Creature {
   update(dt) {
     this.x += 200 * dt;
 
-    if (this.x >= 550) { // bugs run start
+    if (this.x >= 550) {
       this.x = 0;
     }
     if (this.x < player.x + player.width &&
       this.x + this.width > player.x &&
       this.y < player.y + player.height &&
-      this.y + this.height > player.y) {
-      console.log('bug collided');
-    }
+      this.y + this.height > player.y)
+      {
+        player.x = 200;
+        player.y = 473;
+
+        this.x = -5;
+        this.y = -5;
+      }
   }
 }
 
@@ -77,13 +82,13 @@ class Player extends Creature {
 // player appears in the middle and at the bottom of the screen
 const player = new Player(200, 473, 75, 60, "images/char-cat-girl.png");
 
-//const enemy = new Enemy(0, 55, 75, 60, "images/enemy-bug.png");
-//const enemy2 = new Enemy(0, 140, 75, 60, "images/enemy-bug.png");
-// const enemy3 = new Enemy(0, 225, 75, 60, "images/enemy-bug.png");
-// const enemy4 = new Enemy(0, 305, 75, 60, "images/enemy-bug.png");
-// const enemy5 = new Enemy(0, 390, 75, 60, "images/enemy-bug.png");
+const enemy = new Enemy(0, 85, 75, 60, "images/enemy-bug.png");
+const enemy2 = new Enemy(0, 140, 75, 60, "images/enemy-bug.png");
+const enemy3 = new Enemy(0, 225, 75, 60, "images/enemy-bug.png");
+const enemy4 = new Enemy(0, 305, 75, 60, "images/enemy-bug.png");
+const enemy5 = new Enemy(0, 390, 75, 60, "images/enemy-bug.png");
 
-//const allEnemies = [enemy, enemy2];
+const allEnemies = [enemy, enemy2, enemy3, enemy4, enemy5];
 
 // This listens for key presses and sends the keys to your
 // Player.handleInput() method. You don't need to modify this.
