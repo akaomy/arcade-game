@@ -17,6 +17,9 @@ class Enemy extends Creature {
   }
   update(dt) {
     this.x += 200 * dt;
+    if (this.x >= 550) { // bugs run start
+      this.x = 0;
+    }
   }
 }
 
@@ -66,10 +69,13 @@ class Player extends Creature {
 
 const player = new Player(200, 400, "images/char-cat-girl.png");
 
-const enemy = new Enemy(0, 35, "images/enemy-bug.png");
-const enemy2 = new Enemy(0, 135, "images/enemy-bug.png");
-const enemy3 = new Enemy(0, 235, "images/enemy-bug.png");
-const allEnemies = [enemy, enemy2, enemy3];
+const enemy = new Enemy(0, 55, "images/enemy-bug.png");
+const enemy2 = new Enemy(0, 140, "images/enemy-bug.png");
+const enemy3 = new Enemy(0, 225, "images/enemy-bug.png");
+const enemy4 = new Enemy(0, 305, "images/enemy-bug.png");
+const enemy5 = new Enemy(0, 390, "images/enemy-bug.png");
+
+const allEnemies = [enemy, enemy2, enemy3, enemy4, enemy5]; // for 4 rows
 
 // This listens for key presses and sends the keys to your
 // Player.handleInput() method. You don't need to modify this.
