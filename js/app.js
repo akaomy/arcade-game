@@ -1,7 +1,9 @@
 class Creature {
-  constructor(x, y, sprite) {
+  constructor(x, y, wdth, hght, sprite) {
     this.x = x;
     this.y = y;
+    this.width = wdth;
+    this.height = hght;
     this.sprite = sprite;
   }
   update(dt) {
@@ -12,13 +14,21 @@ class Creature {
 }
 
 class Enemy extends Creature {
-  constructor(x, y, sprite) {
-    super(x, y, sprite);
+  constructor(x, y, wdth=100, hght=60, sprite) {
+    super(x, y, wdth, hght, sprite);
   }
+
   update(dt) {
     this.x += 200 * dt;
+
     if (this.x >= 550) { // bugs run start
       this.x = 0;
+    }
+    if (this.x < player.x + player.width &&
+      this.x + this.width > player.x &&
+      this.y < player.y + player.height &&
+      this.y + this.height > player.y) {
+      console.log('bug collided');
     }
   }
 }
@@ -26,8 +36,8 @@ class Enemy extends Creature {
 // Player class with update(), render() and
 // a handleInput() methods.
 class Player extends Creature {
-  constructor(x, y, sprite) {
-    super(x, y, sprite);
+  constructor(x, y, wdth=100, hght=60, sprite) {
+    super(x, y, wdth, hght, sprite);
   }
 
   handleInput(direction_moves) {
@@ -63,19 +73,15 @@ class Player extends Creature {
   };
 }
 
-// Now instantiate your objects.
-// Place all enemy objects in an array called allEnemies
-// Place the player object in a variable called player
+const player = new Player(200, 400, 100, 60, "images/char-cat-girl.png");
 
-const player = new Player(200, 400, "images/char-cat-girl.png");
+const enemy = new Enemy(0, 55, 100, 60, "images/enemy-bug.png");
+const enemy2 = new Enemy(0, 140, 100, 60, "images/enemy-bug.png");
+const enemy3 = new Enemy(0, 225, 100, 60, "images/enemy-bug.png");
+const enemy4 = new Enemy(0, 305, 100, 60, "images/enemy-bug.png");
+const enemy5 = new Enemy(0, 390, 100, 60, "images/enemy-bug.png");
 
-const enemy = new Enemy(0, 55, "images/enemy-bug.png");
-const enemy2 = new Enemy(0, 140, "images/enemy-bug.png");
-const enemy3 = new Enemy(0, 225, "images/enemy-bug.png");
-const enemy4 = new Enemy(0, 305, "images/enemy-bug.png");
-const enemy5 = new Enemy(0, 390, "images/enemy-bug.png");
-
-const allEnemies = [enemy, enemy2, enemy3, enemy4, enemy5]; // for 4 rows
+const allEnemies = [enemy, enemy2, enemy3, enemy4, enemy5];
 
 // This listens for key presses and sends the keys to your
 // Player.handleInput() method. You don't need to modify this.
