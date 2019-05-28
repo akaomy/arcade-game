@@ -1,12 +1,10 @@
 class Creature {
-  constructor(x, y) {
+  constructor(x, y, sprite) {
     this.x = x;
     this.y = y;
+    this.sprite = sprite;
   }
   update(dt) {
-    // You should multiply any movement by the dt parameter
-    // which will ensure the game runs at the same speed for
-    // all computers.
   };
   render() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
@@ -14,22 +12,22 @@ class Creature {
 }
 
 class Enemy extends Creature {
-  constructor() {
-    super(x, y);
-    this.sprite = "images/enemy-bug.png";
+  constructor(x, y, sprite) {
+    super(x, y, sprite);
+  }
+  update(dt) {
+    this.x += 200 * dt;
   }
 }
 
 // Player class with update(), render() and
 // a handleInput() methods.
 class Player extends Creature {
-  constructor(x, y) {
-    super(x, y);
-    this.sprite = "images/char-cat-girl.png";
+  constructor(x, y, sprite) {
+    super(x, y, sprite);
   }
 
   handleInput(direction_moves) {
-
     switch(direction_moves) {
       case 'left':
         this.x = this.x - 100;
@@ -66,8 +64,12 @@ class Player extends Creature {
 // Place all enemy objects in an array called allEnemies
 // Place the player object in a variable called player
 
-const player = new Player(200, 400);
+const player = new Player(200, 400, "images/char-cat-girl.png");
 
+const enemy = new Enemy(0, 35, "images/enemy-bug.png");
+const enemy2 = new Enemy(0, 135, "images/enemy-bug.png");
+const enemy3 = new Enemy(0, 235, "images/enemy-bug.png");
+const allEnemies = [enemy, enemy2, enemy3];
 
 // This listens for key presses and sends the keys to your
 // Player.handleInput() method. You don't need to modify this.
