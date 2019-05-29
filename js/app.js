@@ -33,8 +33,7 @@ class Enemy extends Creature {
         player.x = 200;
         player.y = 473;
 
-        this.x = 0;
-        this.y = 55;
+        resetEnemies();
       }
   }
 }
@@ -81,14 +80,6 @@ class Player extends Creature {
 // player appears in the middle and at the bottom of the screen
 const player = new Player(200, 473, 75, 60, "images/char-cat-girl.png");
 
-// const enemy = new Enemy(0, 55, 75, 60);
-// const enemy2 = new Enemy(0, 140, 75, 60);
-// const enemy3 = new Enemy(0, 225, 75, 60);
-// const enemy4 = new Enemy(0, 305, 75, 60);
-// const enemy5 = new Enemy(0, 390, 75, 60);
-
-// const allEnemies = [enemy, enemy2, enemy3, enemy4];
-
 const getRandomNum = num => {
   return Math.floor(Math.random() * Math.floor(num));
 }
@@ -112,11 +103,11 @@ const enemiesFactory = enemiesAmount => {
   }
   return enemiesArray;
 }
+let allEnemies = enemiesFactory(5);
 
-const allEnemies = enemiesFactory(5);
-
-
-
+let resetEnemies = function () {
+  allEnemies = enemiesFactory(5)
+}
 
 // This listens for key presses and sends the keys to your
 // Player.handleInput() method. You don't need to modify this.
