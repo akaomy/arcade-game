@@ -14,12 +14,13 @@ class Creature {
 }
 
 class Enemy extends Creature {
-  constructor(x, y, wdth=100, hght=60, sprite="images/enemy-bug.png") {
+  constructor(initSpeed = 200, x, y, wdth=100, hght=60, sprite="images/enemy-bug.png") {
     super(x, y, wdth, hght, sprite);
+    this.initSpeed = initSpeed;
   }
 
   update(dt) {
-    this.x += 200 * dt;
+    this.x += this.initSpeed * dt;
 
     if (this.x >= 550) {
       this.x = 0;
@@ -88,14 +89,25 @@ const player = new Player(200, 473, 75, 60, "images/char-cat-girl.png");
 
 // const allEnemies = [enemy, enemy2, enemy3, enemy4];
 
-const enemiesFactory = function (enemiesAmount) {
+const getRandomNum = num => {
+  return Math.floor(Math.random() * Math.floor(num));
+}
+
+// creates new enemy on each line on the canvas
+// each bug has its own speed
+const enemiesFactory = enemiesAmount => {
   const enemiesArray = [];
-  let yVal = 55;
+  let newYval = 55;
+  let newXval = 55;
+  let newSpeed = 200;
 
   let i = 0;
   while (i < enemiesAmount) {
-    enemiesArray.push(new Enemy(0, yVal));
-    yVal += 60;
+    let newObj = new Enemy(newSpeed, newXval, newYval);
+    enemiesArray.push(newObj);
+    newYval += 85;
+    newXval = getRandomNum(250);
+    newSpeed += getRandomNum(80);
     i ++;
   }
   return enemiesArray;
