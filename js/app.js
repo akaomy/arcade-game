@@ -1,5 +1,5 @@
 class Creature {
-  constructor(x, y, wdth, hght, sprite) {
+  constructor(x=0, y, wdth, hght, sprite) {
     this.x = x;
     this.y = y;
     this.width = wdth;
@@ -14,7 +14,7 @@ class Creature {
 }
 
 class Enemy extends Creature {
-  constructor(x, y, wdth=100, hght=60, sprite) {
+  constructor(x, y, wdth=100, hght=60, sprite="images/enemy-bug.png") {
     super(x, y, wdth, hght, sprite);
   }
 
@@ -32,8 +32,8 @@ class Enemy extends Creature {
         player.x = 200;
         player.y = 473;
 
-        this.x = -5;
-        this.y = -5;
+        this.x = 0;
+        this.y = 55;
       }
   }
 }
@@ -62,7 +62,6 @@ class Player extends Creature {
       case 'up':
         if (this.y > 0) {
           this.y = this.y - 85;
-          console.log(this.y);
         }
         if (this.y == -25) {
           console.log(this.y + ' game over');
@@ -71,7 +70,6 @@ class Player extends Creature {
         break;
       case 'down':
         this.y = this.y + 83;   // fix bug
-        console.log(this.y);
         if (this.y >= 473) {
           this.y = 473;
         }
@@ -82,11 +80,11 @@ class Player extends Creature {
 // player appears in the middle and at the bottom of the screen
 const player = new Player(200, 473, 75, 60, "images/char-cat-girl.png");
 
-const enemy = new Enemy(0, 85, 75, 60, "images/enemy-bug.png");
-const enemy2 = new Enemy(0, 140, 75, 60, "images/enemy-bug.png");
-const enemy3 = new Enemy(0, 225, 75, 60, "images/enemy-bug.png");
-const enemy4 = new Enemy(0, 305, 75, 60, "images/enemy-bug.png");
-const enemy5 = new Enemy(0, 390, 75, 60, "images/enemy-bug.png");
+const enemy = new Enemy(0, 55, 75, 60);
+const enemy2 = new Enemy(0, 140, 75, 60);
+const enemy3 = new Enemy(0, 225, 75, 60);
+const enemy4 = new Enemy(0, 305, 75, 60);
+const enemy5 = new Enemy(0, 390, 75, 60);
 
 const allEnemies = [enemy, enemy2, enemy3, enemy4, enemy5];
 
