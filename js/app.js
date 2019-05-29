@@ -80,13 +80,35 @@ class Player extends Creature {
 // player appears in the middle and at the bottom of the screen
 const player = new Player(200, 473, 75, 60, "images/char-cat-girl.png");
 
-const enemy = new Enemy(0, 55, 75, 60);
-const enemy2 = new Enemy(0, 140, 75, 60);
-const enemy3 = new Enemy(0, 225, 75, 60);
-const enemy4 = new Enemy(0, 305, 75, 60);
-const enemy5 = new Enemy(0, 390, 75, 60);
+// const enemy = new Enemy(0, 55, 75, 60);
+// const enemy2 = new Enemy(0, 140, 75, 60);
+// const enemy3 = new Enemy(0, 225, 75, 60);
+// const enemy4 = new Enemy(0, 305, 75, 60);
+// const enemy5 = new Enemy(0, 390, 75, 60);
 
-const allEnemies = [enemy, enemy2, enemy3, enemy4, enemy5];
+// const allEnemies = [enemy, enemy2, enemy3, enemy4];
+
+// const enemiesFactory = function(howManyEnemies) {
+//    const arr = [];
+//    for (let i = 0; i < howManyEnemies; i++) {
+//        arr.push(new Enemy( //enemy params go in here );
+//    }
+//    return arr;
+// }
+// const allEnemies = enemiesFactory(5);
+
+const enemiesFactory = function (enemiesAmount) {
+  const enemiesArray = [];
+  for (let i = 0; i < enemiesAmount; i++) {
+    enemiesArray.push(new Enemy(0, 55, 75, 60));
+  }
+  return enemiesArray;
+}
+
+const allEnemies = enemiesFactory(5);
+
+
+
 
 // This listens for key presses and sends the keys to your
 // Player.handleInput() method. You don't need to modify this.
