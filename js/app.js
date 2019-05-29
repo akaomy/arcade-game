@@ -88,19 +88,15 @@ const player = new Player(200, 473, 75, 60, "images/char-cat-girl.png");
 
 // const allEnemies = [enemy, enemy2, enemy3, enemy4];
 
-// const enemiesFactory = function(howManyEnemies) {
-//    const arr = [];
-//    for (let i = 0; i < howManyEnemies; i++) {
-//        arr.push(new Enemy( //enemy params go in here );
-//    }
-//    return arr;
-// }
-// const allEnemies = enemiesFactory(5);
-
 const enemiesFactory = function (enemiesAmount) {
   const enemiesArray = [];
-  for (let i = 0; i < enemiesAmount; i++) {
-    enemiesArray.push(new Enemy(0, 55, 75, 60));
+  let yVal = 55;
+
+  let i = 0;
+  while (i < enemiesAmount) {
+    enemiesArray.push(new Enemy(0, yVal));
+    yVal += 60;
+    i ++;
   }
   return enemiesArray;
 }
