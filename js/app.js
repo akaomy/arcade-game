@@ -34,6 +34,7 @@ class Enemy extends Creature {
         player.y = 473;
 
         resetEnemies();
+
       }
   }
 }
@@ -63,9 +64,8 @@ class Player extends Creature {
         if (this.y > 0) {
           this.y = this.y - 85;
         }
-        if (this.y == -25) {
-          console.log(this.y + ' game over');
-          // TODO: player can\'t move anymore
+        if (this.y == -37) {
+          showCongratPopup();
         }
         break;
       case 'down':
@@ -98,7 +98,7 @@ const enemiesFactory = enemiesAmount => {
     enemiesArray.push(newObj);
     newYval += 85;
     newXval = getRandomNum(250);
-    newSpeed += getRandomNum(80);
+    newSpeed += getRandomNum(76);
     i ++;
   }
   return enemiesArray;
@@ -119,4 +119,26 @@ document.addEventListener('keyup', function(e) {
         40: 'down'
     };
     player.handleInput(allowedKeys[e.keyCode]);
+});
+
+/* Popup congratulations window*/
+
+let popupTransparentBkg = document.querySelector(".congrat-popup-bkg");
+let closePopup = document.querySelector(".close-popup");
+
+const showCongratPopup = () => {
+   popupTransparentBkg.style.display = "block";
+};
+
+const closeCongratPopup = () => {
+  popupTransparentBkg.style.display = "none";
+};
+
+// close popup and resets the game
+closePopup.addEventListener('click', function() {
+  closeCongratPopup();
+  player.x = 200;
+  player.y = 473;
+
+  resetEnemies();
 });

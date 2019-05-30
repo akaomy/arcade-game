@@ -1,3 +1,50 @@
 body {
     text-align: center;
 }
+
+
+/*
+Congratulations popup
+*/
+.congrat-popup-bkg {
+  display: none;
+  background-color: rgb(210,227,164, 0.6);
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.congrat-popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border: 12px solid #E9D16A;
+  border-radius: 5px 55px;
+  padding: 0 30px 30px;
+  box-shadow: 0px 3px 25px 0 rgb(224,183,93);
+  width: 600px;
+  height: auto;
+  background-color: #F2EF94;
+  color: #336677;
+}
+
+.close-popup {
+  background-color: #336677;
+  color: white;
+  border: none;
+  border-radius: 7px;
+  padding: 7px 14px;
+  font-weight: bold;
+}
+
+.action-btns {
+  background-color: #336677;
+  color: white;
+  font-weight: 600;
+  margin-top: 6px;
+  font-size: 1.1em;
+  border-radius: 8px;
+}
