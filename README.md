@@ -10,7 +10,7 @@
 - Once the player reaches the water (i.e., the top of the game board), the game is won
 
 ### Instructions
-Use keyboard arrows to move the player in order to bring it to the water
+Use keyboard arrows to move your player character in order to bring it to the water
 
 ### Todos and bugs log:
 [Taiga.io](https://tree.taiga.io/project/akaomy-arcade-game/issues)
