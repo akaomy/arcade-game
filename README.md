@@ -13,4 +13,4 @@
 Use keyboard arrows to move your player character in order to bring it to the water
 
 ### Todos and bugs log:
-[Taiga.io](https://tree.taiga.io/project/akaomy-arcade-game/issues)
+[Taiga.io issues](https://tree.taiga.io/project/akaomy-arcade-game/issues)
